@@ -1,5 +1,6 @@
-const CACHE_NAME = 'posture-training-pwa-v2';
-const APP_SHELL = ['/', '/index.html', '/manifest.json', '/icon.svg'];
+const CACHE_NAME = 'posture-training-pwa-v3';
+const scopeUrl = self.registration.scope;
+const APP_SHELL = ['.', 'index.html', 'manifest.json', 'icon.svg'].map((path) => new URL(path, scopeUrl).toString());
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -26,12 +27,12 @@ self.addEventListener('fetch', (event) => {
       return fetch(event.request)
         .then((response) => {
           const copy = response.clone();
-          if (response.ok && new URL(event.request.url).origin === self.location.origin) {
+          if (response.ok && event.request.url.startsWith(scopeUrl)) {
             caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           }
           return response;
         })
-        .catch(() => caches.match('/index.html'));
+        .catch(() => caches.match(new URL('index.html', scopeUrl).toString()));
     }),
   );
 });

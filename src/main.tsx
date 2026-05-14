@@ -11,7 +11,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').catch(() => {
+    const baseUrl = import.meta.env.BASE_URL;
+    navigator.serviceWorker.register(`${baseUrl}service-worker.js`, { scope: baseUrl }).catch(() => {
       // PWA registration can fail in private browsing; the app still works locally.
     });
   });

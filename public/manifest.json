@@ -2,8 +2,8 @@
   "name": "女性体态训练打卡",
   "short_name": "体态打卡",
   "description": "女性体态训练、日常姿势纠正、上镜状态优化和本地打卡记录 PWA。",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/posture-training-pwa/",
+  "scope": "/posture-training-pwa/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fffaf2",
@@ -11,7 +11,7 @@
   "categories": ["health", "lifestyle", "productivity"],
   "icons": [
     {
-      "src": "/icon.svg",
+      "src": "/posture-training-pwa/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
